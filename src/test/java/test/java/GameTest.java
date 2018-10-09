@@ -370,6 +370,31 @@ public class GameTest extends TestCase{
 	      assertEquals(false, Hand.fullHouseAIP(cards));
 	}
 	
+	public void testFourOAKindCase1() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "C8";
+	      cards[1] = "S8";
+	      cards[2] = "H8";
+	      cards[3] = "D8";
+	      cards[4] = "C2";
+	      
+	      assertEquals(true, testHand.fourOAKind(cards));
+	}
+	
+	public void testFourOAKindCase2() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "S8";
+	      cards[1] = "SJ";
+	      cards[2] = "C9";
+	      cards[3] = "DQ";
+	      cards[4] = "D9";
+	      
+	      assertEquals(false, testHand.fourOAKind(cards));
+	}
 	
 	
 	
