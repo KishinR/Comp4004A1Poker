@@ -181,7 +181,62 @@ public class AIPHand {
 		return false;
 		
 	}
+
+	public boolean straightAIP(String[] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		for (int i = 0; i < hand.length; i++) {
+			rank.add(hand[i].substring(1));
 	
+			
+		}
+		LinkedList<Integer> intType = new LinkedList<Integer>();
+		for (int i = 0; i < rank.size(); i++) {
+			if (rank.get(i).equals("J")) intType.add(11);
+			else if (rank.get(i).equals("Q")) intType.add(12);
+			else if (rank.get(i).equals("K")) intType.add(13);
+			else if (rank.get(i).equals("A")) intType.add(14);
+			else intType.add(Integer.parseInt(rank.get(i)));
+		}
+		
+		Collections.sort(intType);
+		
+		
+		
+		if (intType.contains(14)) {
+			if (specialAce(intType) == 4)
+				intType.set(intType.indexOf(14), 1);
+		}
+		
+		
+		Collections.sort(intType);
+		
+		for (int i = 0; i < intType.size() - 1; i++) {
+			if (intType.get(i + 1) - intType.get(i) != 1)
+				return false;
+			
+		}
+		
+		return true;
+		
+	}
+	
+	public int specialAce(LinkedList<Integer> intType) {
+		int counter = 0;
+		
+		if(intType.contains(2)) {
+			counter++;
+		}
+		if(intType.contains(3)) {
+			counter++;
+		}
+		if(intType.contains(4)) {
+			counter++;
+		}
+		if(intType.contains(5)) {
+			counter++;
+		}
+		return counter;
+	}
 	
 	
 	

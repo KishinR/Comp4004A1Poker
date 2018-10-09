@@ -239,7 +239,8 @@ public class GameTest extends TestCase{
 	}
 
 	public void testAIPStraightCase1() {
-		  Hand testHand = new Hand();
+		  AIPHand Hand = new AIPHand();
+		 
 	      String [] cards = new String [5];
 	      
 	      cards[0] = "S8";

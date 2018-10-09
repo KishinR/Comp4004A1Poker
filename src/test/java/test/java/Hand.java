@@ -193,7 +193,7 @@ public class Hand {
 		
 	}
 
-	public boolean straight (String[] hand) {
+	public boolean straight(String[] hand) {
 		LinkedList<String> rank = new LinkedList<String>();
 		for (int i = 0; i < hand.length; i++) {
 			rank.add(hand[i].substring(1));
