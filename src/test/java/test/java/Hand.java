@@ -249,5 +249,20 @@ public class Hand {
 		return counter;
 	}
 	
+	public boolean flush(String[] hand) {
+		LinkedList<String> suit = new LinkedList<String>();
+		for (int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(0, 1));
+		}
+		
+		for (int i = 0; i < suit.size(); i++) {
+			for (int j = 0; j < suit.size(); j++) {
+				if (! suit.get(i).equals(suit.get(j)))
+					return false;
+			}
+		}
+		
+		return true;
+	}
 	
 }
