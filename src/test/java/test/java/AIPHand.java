@@ -1,12 +1,9 @@
 package test.java;
 
 import java.util.LinkedList;
-import java.util.Collections;
-import java.util.ArrayList;
 
-
-public class Hand {
-
+public class AIPHand {
+	
 	private String [] cards;
 	private int result;
 	
@@ -20,15 +17,12 @@ public class Hand {
 		add(14);
 	}};
 	
-
-	public Hand() { 
+	public AIPHand() { 
 		//System.out.println("Hand is created\n");
 		loadVariables();
 	}
-	
-	
-
 	public void loadVariables() {
 		cards = new String [Hand_Size];
 	}
+
 }

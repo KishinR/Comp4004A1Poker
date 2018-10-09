@@ -18,7 +18,7 @@ public class GameTest extends TestCase{
 	}
 	
 	public void testAIPHand() {
-		Hand AIPHand = new Hand();
+		AIPHand Hand = new AIPHand();
 		assertEquals(5, AIPHand.Hand_Size);
 	}
 	
