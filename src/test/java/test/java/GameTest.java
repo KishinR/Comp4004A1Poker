@@ -385,6 +385,7 @@ public class GameTest extends TestCase{
 	
 	public void testFourOAKindCase2() {
 		  Hand testHand = new Hand();
+		  
 	      String [] cards = new String [5];
 	      
 	      cards[0] = "S8";
@@ -422,7 +423,31 @@ public class GameTest extends TestCase{
 	      assertEquals(false, Hand.fourOAKindAIP(cards));
 	}
 
+	public void testStraightFlushCase1() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "C8";
+	      cards[1] = "C9";
+	      cards[2] = "C10";
+	      cards[3] = "CJ";
+	      cards[4] = "CQ";
+	      
+	      assertEquals(true, testHand.straightFlush(cards));
+	}
 	
+	public void testStraightFlushCase2() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "H2";
+	      cards[1] = "S5";
+	      cards[2] = "SJ";
+	      cards[3] = "HJ";
+	      cards[4] = "SK";
+	      
+	      assertEquals(false, testHand.straightFlush(cards));
+	}
 	
 	
 	
