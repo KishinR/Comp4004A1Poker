@@ -39,4 +39,21 @@ public class GameTest extends TestCase{
 		 assertEquals(true, otherCards.containsAll(testHand.highCard(cards)));
 	}
 	
+	public void testHighCardAIP() {
+		ArrayList<Integer> otherCards = new ArrayList<Integer> ();
+		AIPHand Hand = new AIPHand();
+	     String [] cards = new String [5];
+	      
+	     cards[0] = "DK";
+	     cards[1] = "S2";
+	     cards[2] = "CQ";
+	     cards[3] = "H6";
+	     cards[4] = "S4";
+	     
+	     otherCards.add(4);
+	     otherCards.add(3);
+	     otherCards.add(1);
+		 assertEquals(true, otherCards.containsAll(Hand.highCardAIP(cards)));
+	}
+	
 }

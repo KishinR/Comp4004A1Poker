@@ -1,5 +1,7 @@
 package test.java;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 
 public class AIPHand {
@@ -24,5 +26,7 @@ public class AIPHand {
 	public void loadVariables() {
 		cards = new String [Hand_Size];
 	}
+	
+
 
 }
