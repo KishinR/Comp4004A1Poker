@@ -56,4 +56,31 @@ public class GameTest extends TestCase{
 		 assertEquals(true, otherCards.containsAll(Hand.highCardAIP(cards)));
 	}
 	
+	public void testPairCase1() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "D2";
+	      cards[1] = "DA";
+	      cards[2] = "D3";
+	      cards[3] = "D4";
+	      cards[4] = "D2";
+	      
+	      assertEquals(true, testHand.Pair(cards));
+	}
+	
+	public void testPairCase2() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "D2";
+	      cards[1] = "D3";
+	      cards[2] = "D4";
+	      cards[3] = "D5";
+	      cards[4] = "D6";
+	      
+	      assertEquals(false, testHand.Pair(cards));
+	}
+	
+	
 }
