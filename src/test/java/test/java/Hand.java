@@ -159,6 +159,38 @@ public class Hand {
 		}
 		return false;
 	}
-
+	
+	public boolean threeOAKind(String[] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		for(int i = 0; i < hand.length; i++) {
+			rank.add(hand[i].substring(1));
+			
+			}
+	
+		int counter = 0;
+		String tType = "";
+		boolean threeOAKind = false;
+		
+		for (int i = 0; i < rank.size(); i++) {
+			for (int j = 0; j < rank.size(); j++) 
+				if(rank.get(i).equals(rank.get(j))) 
+					counter ++;
+			
+			if (counter > 3)
+				return false;
+			
+			if (counter == 3 ) {
+				tType = rank.get(i);
+				threeOAKind = true;
+				return true;
+				
+			}
+			counter = 0;
+		
+		}
+		
+		return false;
+		
+	}
 
 }
