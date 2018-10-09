@@ -83,7 +83,7 @@ public class GameTest extends TestCase{
 	}
 	
 	public void testAIPPairCase1() {
-		  Hand testHand = new Hand();
+		  AIPHand Hand = new AIPHand();
 	      String [] cards = new String [5];
 	      
 	      cards[0] = "D2";
@@ -92,7 +92,7 @@ public class GameTest extends TestCase{
 	      cards[3] = "D4";
 	      cards[4] = "D2";
 	      
-	      assertEquals(true, testHand.Pair(cards));
+	      assertEquals(true, Hand.PairAIP(cards));
 	}
 	
 	public void testAIPPairCase2() {
@@ -121,7 +121,7 @@ public class GameTest extends TestCase{
 	      assertEquals(true, testHand.twoPair(cards));
 	}
 	
-	public void testIsTwoPairCase2() {
+	public void testTwoPairCase2() {
 		  Hand testHand = new Hand();
 	      String [] cards = new String [5];
 	      
@@ -133,6 +133,34 @@ public class GameTest extends TestCase{
 	      
 	      assertEquals(false, testHand.twoPair(cards));
 	}
+	
+	public void testAIPTwoPairCase1() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "S2";
+	      cards[1] = "HA";
+	      cards[2] = "S2";
+	      cards[3] = "C8";
+	      cards[4] = "C8";
+	      
+	      assertEquals(true, Hand.twoPairAIP(cards));
+	}
+	
+	public void testAIPTwoPairCase2() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "C2";
+	      cards[1] = "CA";
+	      cards[2] = "CJ";
+	      cards[3] = "H3";
+	      cards[4] = "C2";
+	      
+	      assertEquals(false, Hand.twoPairAIP(cards));
+	}
+	
+	
 	
 	
 	
