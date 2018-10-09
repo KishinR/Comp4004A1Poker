@@ -12,9 +12,14 @@ import junit.framework.TestCase;
 public class GameTest extends TestCase{
 
 	@Test
-	
 	public void testOtherHand() {
 		Hand otherHand = new Hand();
 		assertEquals(5, otherHand.Hand_Size);
 	}
+	
+	public void testAIPHand() {
+		Hand AIPHand = new Hand();
+		assertEquals(5, AIPHand.Hand_Size);
+	}
+	
 }
