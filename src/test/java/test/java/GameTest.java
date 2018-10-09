@@ -108,5 +108,32 @@ public class GameTest extends TestCase{
 	      assertEquals(false, Hand.PairAIP(cards));
 	}
 	
+	public void testTwoPairCase1() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "S2";
+	      cards[1] = "HA";
+	      cards[2] = "S2";
+	      cards[3] = "C8";
+	      cards[4] = "C8";
+	      
+	      assertEquals(true, testHand.twoPair(cards));
+	}
+	
+	public void testIsTwoPairCase2() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "C2";
+	      cards[1] = "CA";
+	      cards[2] = "CJ";
+	      cards[3] = "H3";
+	      cards[4] = "C2";
+	      
+	      assertEquals(false, testHand.twoPair(cards));
+	}
+	
+	
 	
 }
