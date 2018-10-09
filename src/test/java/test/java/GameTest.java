@@ -343,4 +343,38 @@ public class GameTest extends TestCase{
 	      
 	      assertEquals(false, testHand.fullHouse(cards));
 	}
+	
+	public void testAIPFullHouseCase1() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "C8";
+	      cards[1] = "C8";
+	      cards[2] = "D5";
+	      cards[3] = "D5";
+	      cards[4] = "D8";
+	      
+	      assertEquals(true, Hand.fullHouseAIP(cards));
+	}
+	
+	public void testAIPFullHouseCase2() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "C2";
+	      cards[1] = "D3";
+	      cards[2] = "C5";
+	      cards[3] = "S5";
+	      cards[4] = "H8";
+	      
+	      assertEquals(false, Hand.fullHouseAIP(cards));
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
