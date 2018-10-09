@@ -160,7 +160,7 @@ public class GameTest extends TestCase{
 	      assertEquals(false, Hand.twoPairAIP(cards));
 	}
 	
-	public void testThreeKindCase1() {
+	public void testThreeOAKindCase1() {
 		  Hand testHand = new Hand();
 	      String [] cards = new String [5];
 	      
@@ -173,7 +173,7 @@ public class GameTest extends TestCase{
 	      assertEquals(true, testHand.threeOAKind(cards));
 	}
 	
-	public void testThreeKindCase2() {
+	public void testThreeOAKindCase2() {
 		  Hand testHand = new Hand();
 	      String [] cards = new String [5];
 	      
@@ -186,7 +186,7 @@ public class GameTest extends TestCase{
 	      assertEquals(false, testHand.threeOAKind(cards));
 	}
 	
-	public void testAIPThreeKindCase1() {
+	public void testAIPThreeOAKindCase1() {
 		  AIPHand Hand = new AIPHand();
 	      String [] cards = new String [5];
 	      
@@ -199,7 +199,7 @@ public class GameTest extends TestCase{
 	      assertEquals(true, Hand.threeOAKindAIP(cards));
 	}
 	
-	public void testAIPThreeKindCase2() {
+	public void testAIPThreeOAKindCase2() {
 		  AIPHand Hand = new AIPHand();
 	      String [] cards = new String [5];
 	      
