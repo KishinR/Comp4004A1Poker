@@ -53,14 +53,12 @@ public class Hand {
 			else intRank.add(Integer.parseInt(rank.get(i)));
 		}
 		
-		
-		//check to see if the Ace is 1 or 14
-		if(intRank.containsAll(Special_Straight)) {
+		if(intRank.containsAll(Special_Straight)) { // this is to see if the special ace is 1 or 14
 			intRank.set(intRank.indexOf(14), 1);
 			Collections.sort(intRank);
 		}
-				
-		//sort the numbers from lowest to highest
+			
+		//sorting system to sort the cards from lowest to highest
 		Collections.sort(intRank);
 		
 		String v1 = "";
