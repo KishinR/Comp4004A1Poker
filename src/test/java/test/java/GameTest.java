@@ -22,4 +22,21 @@ public class GameTest extends TestCase{
 		assertEquals(5, AIPHand.Hand_Size);
 	}
 	
+	public void testHighCard() {
+		ArrayList<Integer> otherCards = new ArrayList<Integer> ();
+		Hand testHand = new Hand();
+	     String [] cards = new String [5];
+	      
+	     cards[0] = "SK";
+	     cards[1] = "C2";
+	     cards[2] = "SQ";
+	     cards[3] = "D6";
+	     cards[4] = "C4";
+	     
+	     otherCards.add(4);
+	     otherCards.add(3);
+	     otherCards.add(1);
+		 assertEquals(true, otherCards.containsAll(testHand.highCard(cards)));
+	}
+	
 }

@@ -20,14 +20,11 @@ public class Hand {
 		add(14);
 	}};
 	
-
 	public Hand() { 
 		//System.out.println("Hand is created\n");
 		loadVariables();
 	}
 	
-	
-
 	public void loadVariables() {
 		cards = new String [Hand_Size];
 	}
