@@ -90,5 +90,24 @@ public class AIPHand {
 		return rArray;
 		
 	}
-
+	
+	public boolean PairAIP(String[] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		for(int i = 0; i < hand.length; i++) {
+			rank.add(hand[i].substring(1));
+		}
+		
+		int counter = 0;
+		
+		for (int i = 0; i < rank.size(); i++) {
+			for (int j = 0; j < rank.size(); j++)
+				if(rank.get(i).equals(rank.get(j))){
+				counter++;
+				if(counter == 2) 
+					return true;
+			}
+			counter = 0;
+		}
+		return false;
+	}
 }
