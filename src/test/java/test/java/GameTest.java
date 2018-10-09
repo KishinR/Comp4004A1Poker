@@ -17,3 +17,4 @@ public class GameTest extends TestCase{
 		Hand otherHand = new Hand();
 		assertEquals(5, otherHand.Hand_Size);
 	}
+}
