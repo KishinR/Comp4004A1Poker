@@ -186,6 +186,32 @@ public class GameTest extends TestCase{
 	      assertEquals(false, testHand.threeOAKind(cards));
 	}
 	
+	public void testAIPThreeKindCase1() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "S8";
+	      cards[1] = "DA";
+	      cards[2] = "S8";
+	      cards[3] = "HA";
+	      cards[4] = "S8";
+	      
+	      assertEquals(true, Hand.threeOAKindAIP(cards));
+	}
+	
+	public void testAIPThreeKindCase2() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "S8";
+	      cards[1] = "S2";
+	      cards[2] = "H9";
+	      cards[3] = "CK";
+	      cards[4] = "S8";
+	      
+	      assertEquals(false, Hand.threeOAKindAIP(cards));
+	}
+	
 	
 	
 	
