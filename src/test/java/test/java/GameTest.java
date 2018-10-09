@@ -237,7 +237,32 @@ public class GameTest extends TestCase{
 	      
 	      assertEquals(false, testHand.straight(cards));
 	}
+
+	public void testAIPStraightCase1() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "S8";
+	      cards[1] = "S9";
+	      cards[2] = "C10";
+	      cards[3] = "HJ";
+	      cards[4] = "SQ";
+	      
+	      assertEquals(true, Hand.straightAIP(cards));
+	}
 	
+	public void testAIPStraightCase2() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "C4";
+	      cards[1] = "S5";
+	      cards[2] = "D7";
+	      cards[3] = "D5";
+	      cards[4] = "S6";
+	      
+	      assertEquals(false, Hand.straightAIP(cards));
+	}
 	
 	
 	
