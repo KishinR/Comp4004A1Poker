@@ -666,6 +666,7 @@ public class GameTest extends TestCase{
 	}
 	
 	public void testSameThreeSequenceAIP() {
+
 	     ArrayList<Integer> otherCards = new ArrayList<Integer> ();
 
 		 AIPHand testHand = new AIPHand();
@@ -683,6 +684,24 @@ public class GameTest extends TestCase{
 		 assertEquals(true, otherCards.containsAll(testHand.sameThreeSequenceAIP(cards)));
 	}
 	
-	
+	public void testCorrectSuit() {
+		  Hand testHand = new Hand();
+	      String [] cards1 = new String [5];
+	      String [] cards2 = new String [5];
+	      
+	      cards1[0] = "S2";
+	      cards1[1] = "S3";
+	      cards1[2] = "S4";
+	      cards1[3] = "S5";
+	      cards1[4] = "S6";
+	      
+	      cards2[0] = "C2";
+	      cards2[1] = "C3";
+	      cards2[2] = "C4";
+	      cards2[3] = "C5";
+	      cards2[4] = "C6";
+	   
+	      assertEquals(true, testHand.getScore(cards1) > testHand.getScore(cards2));
+	}
 	
 }
