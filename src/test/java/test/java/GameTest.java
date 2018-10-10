@@ -616,7 +616,6 @@ public class GameTest extends TestCase{
 	      cards[2] = "SJ";
 	      cards[3] = "SK";
 	      cards[4] = "DA";
-	      //using the same method for royalflush as used for straight flush
 	      assertEquals(4, testHand.cardAFStraightFlushAIP(cards));
 	}
 
@@ -629,7 +628,6 @@ public class GameTest extends TestCase{
 	      cards[2] = "SJ";
 	      cards[3] = "SK";
 	      cards[4] = "SA";
-	      //using the same method for royalflush as used for straight flush
 	      assertEquals(1, testHand.cardAFStraightFlushAIP(cards));
 	}
 	
