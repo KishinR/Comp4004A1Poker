@@ -475,7 +475,31 @@ public class GameTest extends TestCase{
 	      assertEquals(false, Hand.straightFlushAIP(cards));
 	}
 	
-	
+	public void testRoyalFlushCase1() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "S10";
+	      cards[1] = "SQ";
+	      cards[2] = "SJ";
+	      cards[3] = "SK";
+	      cards[4] = "SA";
+	      
+	      assertEquals(true, testHand.royalFlush(cards));
+	}
+
+	public void testRoyalFlushCase2() {
+		  Hand testHand = new Hand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "H9";
+	      cards[1] = "C10";
+	      cards[2] = "DJ";
+	      cards[3] = "CK";
+	      cards[4] = "HA";
+	      
+	      assertEquals(false, testHand.royalFlush(cards));
+	}
 	
 	
 	
