@@ -526,7 +526,6 @@ public class GameTest extends TestCase{
 	      
 	      assertEquals(false, Hand.royalFlushAIP(cards));
 	}
-	
 
 	public void testOneAFFlushCase1AIP() {
 		 AIPHand testHand = new AIPHand();
@@ -555,6 +554,31 @@ public class GameTest extends TestCase{
 		
 	}
 
+	public void testOneAFStraightCase1AIP() {
+		 AIPHand testHand = new AIPHand();
+	     String [] cards = new String [5];
+	      
+	      cards[0] = "D5";
+	      cards[1] = "S2";
+	      cards[2] = "D3";
+	      cards[3] = "H4";
+	      cards[4] = "C10";
+	      
+	      assertEquals(4, testHand.cardAFStraightAIP(cards));
+	}
+	
+	public void testOneAFStraightCase2AIP() {
+		 AIPHand testHand = new AIPHand();
+	     String [] cards = new String [5];
+	      
+	      cards[0] = "C4";
+	      cards[1] = "H5";
+	      cards[2] = "D2";
+	      cards[3] = "CA";
+	      cards[4] = "H6";
+	      
+	      assertEquals(3, testHand.cardAFStraightAIP(cards));
+	}
 	
 	
 	
