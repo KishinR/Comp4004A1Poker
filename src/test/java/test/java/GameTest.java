@@ -738,8 +738,7 @@ public class GameTest extends TestCase{
 	     otherCards.add(4);
 	     otherCards.add(3);
 	     otherCards.add(1);
-	     assertEquals(otherCards, testHand.sameTwoPair(cards));
-		 //assertEquals(true, otherCards.containsAll(testHand.sameThreeSuitAIP(cards)));
+		 assertEquals(true, otherCards.containsAll(testHand.sameTwoPair(cards)));
 	}
 	
 	
