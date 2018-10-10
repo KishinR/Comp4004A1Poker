@@ -405,6 +405,5 @@ public class Hand {
 		return true;
 	}
 
-
-
+	
 }
