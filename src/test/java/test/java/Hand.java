@@ -476,7 +476,91 @@ public class Hand {
 		return score;
 	}
 
-	
+	public int twoPairScore(String [] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			rank .add(hand[i].substring(1));
+			
+		}
+		int counter = 0;
+		String tType1 = "";
+		String tType2 = "";
+		
+		boolean twoOAKind1 = false;
+		boolean twoOAKind2 = false;
+		for (int i = 0; i < rank.size(); i++) {
+			
+			for (int j = 0; j < rank.size(); j++)
+				if(rank.get(i).equals(rank.get(j))) 
+					counter++;
+			
+			if(counter > 2) return -1;
+			
+			if(counter == 2) { 
+				if (!twoOAKind1) {
+					tType1 = rank.get(i); 
+					twoOAKind1 = true;
+				}
+					
+			}
+			counter = 0;
+		}
+		for (int i = 0; i < rank.size(); i++) {
+			
+			for(int j = 0; j < rank.size(); j++) if(rank.get(i).equals(rank.get(j)) && (!rank.get(i).equals(tempType1)))
+				counter++;
+			
+			if(counter > 2) return -1;
+			
+			if(counter == 2) { 
+				if (!twoOAKind2) {
+					tType2 = rank.get(i); 
+					twoOAKind2 = true;
+				}
+				
+			}
+			counter = 0;
+		}
+		String oddCard = "";
+		
+		int pScore1 = 0;
+		int pScore2 = 0;
+		int oddScore = 0;
+		
+		for(int i = 0; i < rank.size(); i++)
+			if( !(rank.get(i).equals(tType1)) && !(rank.get(i).equals(tType2)))
+				oddCard = rank.get(i);
+		
+		if(oddCard.equals(""))
+			return -1;
+		
+		if(tType1.equals("J")) pScore1 += 11;
+		else if(tType1.equals("Q")) pScore1 += 12;
+		else if(tType1.equals("K")) pScore1 += 13;
+		else if(tType1.equals("A")) pScore1 += 14;
+		else pScore1 += Integer.parseInt(tType1);
+		
+		
+		if(tType2.equals("J")) pScore2 += 11;
+		else if(tType2.equals("Q")) pScore2 += 12;
+		else if(tType2.equals("K")) pScore2 += 13;
+		else if(tType2.equals("A")) pScore2 += 14;
+		else pScore2 += Integer.parseInt(tType2);
+		
+		if(oddCard.equals("J")) oddScore  += 11;
+		else if(oddCard.equals("Q")) oddScore  += 12;
+		else if(oddCard.equals("K")) oddScore  += 13;
+		else if(oddCard.equals("A")) oddScore  += 14;
+		else oddScore += Integer.parseInt(oddCard);
+		
+		if(pScore1 > pScore2) 
+			return 100000 * pScore1 + 1000 * pScore2 + 10 * oddScore + suitPoints(hand, rank.indexOf(oddCard));
+		else return 100000 * pScore2 + 1000 * pScore1 + 10 * oddScore + suitPoints(hand, rank.indexOf(oddCard));
+		
+		
+		
+	}
 	
 	
 }
