@@ -420,4 +420,32 @@ public class Hand {
 		return 0;
 	}
 	
+	public int getHighCardScore(String [] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		LinkedList<Integer> intType = new LinkedList<Integer>();
+		
+		for(int i = 0; i < hand.length; i++)
+			rank.add(hand[i].substring(1)); 
+		
+		for(int i = 0; i < rank.size(); i ++) {
+			if(rank.get(i).equals("J")) intType.add(11);
+			else if(rank.get(i).equals("Q")) intType.add(12);
+			else if(rank.get(i).equals("K")) intType.add(13);
+			else if(rank.get(i).equals("A")) intType.add(14);
+			else intType.add(Integer.parseInt(rank.get(i)));
+		}
+		if(intType.containsAll(Special_Straight)) {
+			intType.set(intType.indexOf(14), 1);
+			Collections.sort(intType);
+		}
+		Collections.sort(intType);
+		
+		return 100000 * intType.get(intType.size() - 1);
+		
+	}
+	
+	
+	
+	
+	
 }
