@@ -667,7 +667,23 @@ public class GameTest extends TestCase{
 		 assertEquals(true, otherCards.containsAll(testHand.sameThreeRankAIP(cards)));
 	}
 	
-	
+	public void testSameThreeSequenceAIP() {
+	     ArrayList<Integer> otherCards = new ArrayList<Integer> ();
+
+		 AIPHand testHand = new AIPHand();
+	     String [] cards = new String [5];
+	      
+	     cards[0] = "S6";
+	     cards[1] = "D8";
+	     cards[2] = "C7";
+	     cards[3] = "H8";
+	     cards[4] = "D2";
+	     
+	     otherCards.add(4);
+	     otherCards.add(1);
+	     
+		 assertEquals(true, otherCards.containsAll(testHand.sameThreeSequenceAIP(cards)));
+	}
 	
 	
 	
