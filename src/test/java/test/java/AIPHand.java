@@ -689,7 +689,262 @@ public class AIPHand {
 		
 	}
 
+	public int suitPoints(String [] hand, int index) {
+		LinkedList<String> suit = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(0, 1));
+		}
+		
+		if(suit.get(index).equals("C")) return 1;
+		else if(suit.get(index).equals("D")) return 2;
+		else if(suit.get(index).equals("H")) return 3;
+		else if(suit.get(index).equals("S")) return 4;
+		
+		return 0;
+	}
 	
+	public int getHighCardScore(String [] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		LinkedList<Integer> intType = new LinkedList<Integer>();
+		
+		for(int i = 0; i < hand.length; i++)
+			rank.add(hand[i].substring(1)); 
+		
+		for(int i = 0; i < rank.size(); i ++) {
+			if(rank.get(i).equals("J")) intType.add(11);
+			else if(rank.get(i).equals("Q")) intType.add(12);
+			else if(rank.get(i).equals("K")) intType.add(13);
+			else if(rank.get(i).equals("A")) intType.add(14);
+			else intType.add(Integer.parseInt(rank.get(i)));
+		}
+		if(intType.containsAll(Special_Straight)) {
+			intType.set(intType.indexOf(14), 1);
+			Collections.sort(intType);
+		}
+		Collections.sort(intType);
+		
+		return 100000 * intType.get(intType.size() - 1);
+		
+	}
+	
+	public int highOrderScoring(String [] hand , int redo) {
+		LinkedList<String> type = new LinkedList<String>();
+		LinkedList<String> suit = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(0, 1));
+			type.add(hand[i].substring(1));
+		
+		}
+		int counter = 0;
+		int score = 0;
+		for (int i = 0; i < type.size(); i++) {
+			for (int j = 0; j < type.size(); j++) 
+				if(type.get(i).equals(type.get(j))) 
+					counter++;
+			
+			if(counter == redo) {
+				if(type.get(i).equals("J")) score += 11;
+				else if(type.get(i).equals("Q")) score += 12;
+				else if(type.get(i).equals("K")) score += 13;
+				else if(type.get(i).equals("A")) score += 14;
+				else score += 100000 * Integer.parseInt(type.get(i));
+				return score;
+				
+			}
+			counter = 0;
+			
+		}
+		
+		return score;
+	}
+
+	public int twoPairScore(String [] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			rank .add(hand[i].substring(1));
+			
+		}
+		int counter = 0;
+		String tType1 = "";
+		String tType2 = "";
+		
+		boolean twoOAKind1 = false;
+		boolean twoOAKind2 = false;
+		for (int i = 0; i < rank.size(); i++) {
+			
+			for (int j = 0; j < rank.size(); j++)
+				if(rank.get(i).equals(rank.get(j))) 
+					counter++;
+			
+			if(counter > 2) return -1;
+			
+			if(counter == 2) { 
+				if (!twoOAKind1) {
+					tType1 = rank.get(i); 
+					twoOAKind1 = true;
+				}
+					
+			}
+			counter = 0;
+		}
+		for (int i = 0; i < rank.size(); i++) {
+			
+			for(int j = 0; j < rank.size(); j++)
+				if(rank.get(i).equals(rank.get(j)) && (!rank.get(i).equals(tType1)))
+				counter++;
+			
+			if(counter > 2) return -1;
+			
+			if(counter == 2) { 
+				if (!twoOAKind2) {
+					tType2 = rank.get(i); 
+					twoOAKind2 = true;
+				}
+				
+			}
+			counter = 0;
+		}
+		String oddCard = "";
+		
+		int pScore1 = 0;
+		int pScore2 = 0;
+		int oddScore = 0;
+		
+		for(int i = 0; i < rank.size(); i++)
+			if( !(rank.get(i).equals(tType1)) && !(rank.get(i).equals(tType2)))
+				oddCard = rank.get(i);
+		
+		if(oddCard.equals(""))
+			return -1;
+		
+		if(tType1.equals("J")) pScore1 += 11;
+		else if(tType1.equals("Q")) pScore1 += 12;
+		else if(tType1.equals("K")) pScore1 += 13;
+		else if(tType1.equals("A")) pScore1 += 14;
+		else pScore1 += Integer.parseInt(tType1);
+		
+		
+		if(tType2.equals("J")) pScore2 += 11;
+		else if(tType2.equals("Q")) pScore2 += 12;
+		else if(tType2.equals("K")) pScore2 += 13;
+		else if(tType2.equals("A")) pScore2 += 14;
+		else pScore2 += Integer.parseInt(tType2);
+		
+		if(oddCard.equals("J")) oddScore  += 11;
+		else if(oddCard.equals("Q")) oddScore  += 12;
+		else if(oddCard.equals("K")) oddScore  += 13;
+		else if(oddCard.equals("A")) oddScore  += 14;
+		else oddScore += Integer.parseInt(oddCard);
+		
+		if(pScore1 > pScore2) 
+			return 100000 * pScore1 + 1000 * pScore2 + 10 * oddScore + suitPoints(hand, rank.indexOf(oddCard));
+		else return 100000 * pScore2 + 1000 * pScore1 + 10 * oddScore + suitPoints(hand, rank.indexOf(oddCard));
+		
+		
+		
+	}
+	
+	public int getScore (String [] hand) {
+		int handScore = 0;
+		if(royalFlushAIP(hand)) {
+			handScore += 90000000;
+			handScore += suitPoints(hand, 0);
+		}
+		else if(straightFlushAIP(hand)) {
+			handScore += 80000000;
+			handScore += getHighCardScore(hand);
+			handScore += suitPoints(hand, 0);
+		}
+		else if(fourOAKindAIP(hand)) {
+			handScore += 70000000;
+			handScore += highOrderScoring(hand, 4);
+		}
+		else if(fullHouseAIP(hand)) {
+			handScore += 60000000;
+			handScore += highOrderScoring(hand, 3);
+		}
+		else if(flushAIP(hand)) {
+			handScore += 50000000;
+			handScore += getHighCardScore(hand);
+			handScore += suitPoints(hand, 0);
+		}
+		else if(straightAIP(hand)) {
+			handScore += 40000000;
+			handScore += getHighCardScore(hand);
+		}
+		else if(threeOAKindAIP(hand)) {
+			handScore += 30000000;
+			handScore += highOrderScoring(hand, 2);
+		}
+		else if(twoPairAIP(hand)) {
+			
+			handScore += 20000000;
+			handScore += twoPairScore(hand);
+		}
+		else if(PairAIP(hand)) {
+			handScore += 10000000;
+			handScore += highOrderScoring(hand, 2);
+		}
+		else{
+			handScore += handScore += getHighCardScore(hand);
+		}
+		
+		
+		return handScore;
+	}
+	
+	public ArrayList<Integer> sameTwoPair(String[] hand){
+		ArrayList<Integer> diffCards = new ArrayList<Integer> ();
+		LinkedList<String> suit = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(1));
+			
+		}
+		
+		int counter = 0;
+		String tType = "";
+		boolean twoOAKind = false;
+		
+		for (int i = 0; i < suit.size(); i++) {
+			
+			for (int j = 0; j < suit.size(); j++)
+				if(suit.get(i).equals(suit.get(j)))
+					counter++;
+			if(counter == 2) tType = suit.get(i); 
+			counter = 0;
+		}
+		
+		String diffCard1 = "";
+		String diffCard2 = "";
+		String diffCard3 = "";
+		
+		for (int i = 0; i < suit.size(); i++)
+			if(!suit.get(i).equals(tType))
+				diffCard1 = suit.get(i);
+		for (int i = 0; i < suit.size(); i++)
+			if((!suit.get(i).equals(tType)) && (!suit.get(i).equals(diffCard1)))
+				diffCard2 = suit.get(i);
+		for (int i = 0; i < suit.size(); i++)
+			if((!suit.get(i).equals(tType)) && (!suit.get(i).equals(diffCard1) && (!suit.get(i).equals(diffCard2))))
+				diffCard3 = suit.get(i);
+		
+		diffCards.add(suit.indexOf(diffCard1));
+		diffCards.add(suit.indexOf(diffCard2));
+		diffCards.add(suit.indexOf(diffCard3));
+		
+		if(diffCards.size() != 3) {
+			diffCards.removeAll(diffCards);
+			diffCards.add(-1);
+			return diffCards;
+		}
+		
+		return diffCards;
+		
+	}
 	
 	
 }

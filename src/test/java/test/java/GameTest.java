@@ -724,7 +724,23 @@ public class GameTest extends TestCase{
 	      assertEquals(true, testHand.getScore(cards1) > testHand.getScore(cards2));
 	}
 	
-	
+	public void testTwoPairScore() {
+		AIPHand testHand = new AIPHand();
+	     String [] cards = new String [5];
+	      
+	     cards[0] = "C8";
+	     cards[1] = "H9";
+	     cards[2] = "S8";
+	     cards[3] = "DK";
+	     cards[4] = "C6";
+	     
+	     ArrayList<Integer> otherCards = new ArrayList<Integer> ();
+	     otherCards.add(4);
+	     otherCards.add(3);
+	     otherCards.add(1);
+	     assertEquals(otherCards, testHand.sameTwoPair(cards));
+		 //assertEquals(true, otherCards.containsAll(testHand.sameThreeSuitAIP(cards)));
+	}
 	
 	
 }
