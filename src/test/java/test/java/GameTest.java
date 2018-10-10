@@ -527,7 +527,7 @@ public class GameTest extends TestCase{
 	      assertEquals(false, Hand.royalFlushAIP(cards));
 	}
 	
-<<<<<<< HEAD
+
 	public void testOneAFFlushCase1() {
 		 AIPHand testHand = new AIPHand();
 	     String [] cards = new String [5];
@@ -554,9 +554,7 @@ public class GameTest extends TestCase{
 	      assertEquals(2, testHand.cardAFFlushAIP(cards));
 		
 	}
-=======
-	
->>>>>>> parent of 4183e8c... method22
+
 	
 	
 	
