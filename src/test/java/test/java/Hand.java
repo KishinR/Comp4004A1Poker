@@ -508,7 +508,8 @@ public class Hand {
 		}
 		for (int i = 0; i < rank.size(); i++) {
 			
-			for(int j = 0; j < rank.size(); j++) if(rank.get(i).equals(rank.get(j)) && (!rank.get(i).equals(tempType1)))
+			for(int j = 0; j < rank.size(); j++)
+				if(rank.get(i).equals(rank.get(j)) && (!rank.get(i).equals(tType1)))
 				counter++;
 			
 			if(counter > 2) return -1;
@@ -562,5 +563,52 @@ public class Hand {
 		
 	}
 	
-	
+	public int getScore (String [] hand) {
+		int handScore = 0;
+		if(royalFlush(hand)) {
+			handScore += 90000000;
+			handScore += suitPoints(hand, 0);
+		}
+		else if(straightFlush(hand)) {
+			handScore += 80000000;
+			handScore += getHighCardScore(hand);
+			handScore += suitPoints(hand, 0);
+		}
+		else if(fourOAKind(hand)) {
+			handScore += 70000000;
+			handScore += highOrderScoring(hand, 4);
+		}
+		else if(fullHouse(hand)) {
+			handScore += 60000000;
+			handScore += highOrderScoring(hand, 3);
+		}
+		else if(flush(hand)) {
+			handScore += 50000000;
+			handScore += getHighCardScore(hand);
+			handScore += suitPoints(hand, 0);
+		}
+		else if(straight(hand)) {
+			handScore += 40000000;
+			handScore += getHighCardScore(hand);
+		}
+		else if(threeOAKind(hand)) {
+			handScore += 30000000;
+			handScore += highOrderScoring(hand, 2);
+		}
+		else if(twoPair(hand)) {
+			
+			handScore += 20000000;
+			handScore += twoPairScore(hand);
+		}
+		else if(Pair(hand)) {
+			handScore += 10000000;
+			handScore += highOrderScoring(hand, 2);
+		}
+		else{
+			handScore += handScore += getHighCardScore(hand);
+		}
+		
+		
+		return handScore;
+	}
 }
