@@ -340,8 +340,8 @@ public class AIPHand {
 		for (int i = 0; i < rank.size(); i++) {
 			if (rank.get(i).equals("J")) intType.add(11);
 			else if (rank.get(i).equals("Q")) intType.add(12);
-			else if (rank.get(i).equals("J")) intType.add(13);
-			else if (rank.get(i).equals("K")) intType.add(14);
+			else if (rank.get(i).equals("K")) intType.add(13);
+			else if (rank.get(i).equals("A")) intType.add(14);
 			else intType.add(Integer.parseInt(rank.get(i))); 
 		}
 		Collections.sort(intType);
