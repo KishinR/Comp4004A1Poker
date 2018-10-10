@@ -444,7 +444,38 @@ public class Hand {
 		
 	}
 	
-	
+	public int highOrderScoring(String [] hand , int redo) {
+		LinkedList<String> type = new LinkedList<String>();
+		LinkedList<String> suit = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(0, 1));
+			type.add(hand[i].substring(1));
+		
+		}
+		int counter = 0;
+		int score = 0;
+		for (int i = 0; i < type.size(); i++) {
+			for (int j = 0; j < type.size(); j++) 
+				if(type.get(i).equals(type.get(j))) 
+					counter++;
+			
+			if(counter == redo) {
+				if(type.get(i).equals("J")) score += 11;
+				else if(type.get(i).equals("Q")) score += 12;
+				else if(type.get(i).equals("K")) score += 13;
+				else if(type.get(i).equals("A")) score += 14;
+				else score += 100000 * Integer.parseInt(type.get(i));
+				return score;
+				
+			}
+			counter = 0;
+			
+		}
+		
+		return score;
+	}
+
 	
 	
 	
