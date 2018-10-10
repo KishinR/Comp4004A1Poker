@@ -404,6 +404,20 @@ public class Hand {
 		
 		return true;
 	}
-
+	
+	public int suitPoints(String [] hand, int index) {
+		LinkedList<String> suit = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(0, 1));
+		}
+		
+		if(suit.get(index).equals("C")) return 1;
+		else if(suit.get(index).equals("D")) return 2;
+		else if(suit.get(index).equals("H")) return 3;
+		else if(suit.get(index).equals("S")) return 4;
+		
+		return 0;
+	}
 	
 }
