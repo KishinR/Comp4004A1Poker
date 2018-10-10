@@ -638,11 +638,11 @@ public class GameTest extends TestCase{
 		 AIPHand testHand = new AIPHand();
 	     String [] cards = new String [5];
 	      
-	     cards[0] = "D8";
-	     cards[1] = "C4";
-	     cards[2] = "DJ";
-	     cards[3] = "H10";
-	     cards[4] = "DK";
+	     cards[0] = "H3";
+	     cards[1] = "C2";
+	     cards[2] = "HQ";
+	     cards[3] = "D10";
+	     cards[4] = "H8";
 	     
 	     otherCards.add(1);
 	     otherCards.add(3);
@@ -656,11 +656,11 @@ public class GameTest extends TestCase{
 		 AIPHand testHand = new AIPHand();
 	     String [] cards = new String [5];
 	      
-	     cards[0] = "CK";
-	     cards[1] = "DK";
-	     cards[2] = "HK";
-	     cards[3] = "D10";
-	     cards[4] = "H8";
+	     cards[0] = "DQ";
+	     cards[1] = "CQ";
+	     cards[2] = "SQ";
+	     cards[3] = "S5";
+	     cards[4] = "H2";
 	     
 	     otherCards.add(3);
 	     otherCards.add(4);
@@ -673,11 +673,11 @@ public class GameTest extends TestCase{
 		 AIPHand testHand = new AIPHand();
 	     String [] cards = new String [5];
 	      
-	     cards[0] = "S6";
-	     cards[1] = "D8";
-	     cards[2] = "C7";
-	     cards[3] = "H8";
-	     cards[4] = "D2";
+	     cards[0] = "D6";
+	     cards[1] = "S8";
+	     cards[2] = "H7";
+	     cards[3] = "D8";
+	     cards[4] = "S2";
 	     
 	     otherCards.add(4);
 	     otherCards.add(1);

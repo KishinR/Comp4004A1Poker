@@ -592,7 +592,103 @@ public class AIPHand {
 		return diffCards;
 	}
 	
-	
+	public ArrayList<Integer> sameThreeSequenceAIP(String[] hand){
+		ArrayList <Integer> diffCards = new ArrayList<Integer>();
+		LinkedList<String> rank = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			rank.add(hand[i].substring(1));
+		}
+		LinkedList<Integer> intType = new LinkedList<Integer>();
+		for(int i = 0; i < rank.size(); i ++) {
+			if(rank.get(i).equals("J")) intType.add(11);
+			else if(rank.get(i).equals("Q")) intType.add(12);
+			else if(rank.get(i).equals("K")) intType.add(13);
+			else if(rank.get(i).equals("A")) intType.add(14);
+			else intType.add(Integer.parseInt(rank.get(i)));
+		}
+		
+		if(intType.contains(14)) {
+			if(intType.contains(2) && intType.contains(3)) intType.set(intType.indexOf(14), 1);
+		}
+		Collections.sort(intType);
+			
+		
+		if(intType.get(1) - intType.get(0) == 1 && intType.get(2) - intType.get(1) == 1) {
+			
+			String v1 = "";
+			String v2 = "";
+			
+			if(intType.get(3) == 1) v1 = "A";
+			else if(intType.get(3) == 11) v1 = "J";
+			else if(intType.get(3) == 12) v1 = "Q";
+			else if(intType.get(3) == 13) v1 = "K";
+			else if(intType.get(3) == 14) v1 = "A";
+			else v1 = new Integer(intType.get(3)).toString();
+			
+			if(intType.get(4) == 1) v2 = "A";
+			else if(intType.get(4) == 11) v2 = "J";
+			else if(intType.get(4) == 12) v2 = "Q";
+			else if(intType.get(4) == 13) v2 = "K";
+			else if(intType.get(4) == 14) v2 = "A";
+			else v2 = new Integer(intType.get(4)).toString();
+			
+			diffCards.add(rank.indexOf(v1));
+			diffCards.add(rank.indexOf(v2));
+			
+		}
+		
+		else if(intType.get(2) - intType.get(1) == 1 && intType.get(3) - intType.get(2) == 1) {
+			
+			String v1 = "";
+			String v2 = "";
+			
+			if(intType.get(0) == 1) v1 = "A";
+			else if(intType.get(0) == 11) v1 = "J";
+			else if(intType.get(0) == 12) v1 = "Q";
+			else if(intType.get(0) == 13) v1 = "K";
+			else if(intType.get(0) == 14) v1 = "A";
+			else v1 = new Integer(intType.get(0)).toString();
+			
+			if(intType.get(4) == 1) v2 = "A";
+			else if(intType.get(4) == 11) v2 = "J";
+			else if(intType.get(4) == 12) v2 = "Q";
+			else if(intType.get(4) == 13) v2 = "K";
+			else if(intType.get(4) == 14) v2 = "A";
+			else v2 = new Integer(intType.get(4)).toString();
+		
+			diffCards.add(rank.indexOf(v1));
+			diffCards.add(rank.indexOf(v2));
+		}
+		else if(intType.get(3) - intType.get(2) == 1 && intType.get(4) - intType.get(3) == 1) {
+			
+			String v1 = "";
+			String v2 = "";
+			
+			if(intType.get(0) == 1) v1 = "A";
+			else if(intType.get(0) == 11) v1 = "J";
+			else if(intType.get(0) == 12) v1 = "Q";
+			else if(intType.get(0) == 13) v1 = "K";
+			else if(intType.get(0) == 14) v1 = "A";
+			else v1 = new Integer(intType.get(0)).toString();
+			
+			if(intType.get(1) == 1) v2 = "A";
+			else if(intType.get(1) == 11) v2 = "J";
+			else if(intType.get(1) == 12) v2 = "Q";
+			else if(intType.get(1) == 13) v2 = "K";
+			else if(intType.get(1) == 14) v2 = "A";
+			else v2 = new Integer(intType.get(1)).toString();
+			
+			diffCards.add(rank.indexOf(v1));
+			diffCards.add(rank.indexOf(v2));
+		}
+		else {
+			diffCards.add(-1);
+		}
+		return diffCards;
+		
+	}
+
 	
 	
 	
