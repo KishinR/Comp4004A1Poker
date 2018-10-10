@@ -394,7 +394,38 @@ public class AIPHand {
 		return true;
 	}
 
-	
+	public int cardAFFlushAIP(String[] hand) {
+		LinkedList<String> suit = new LinkedList<String>();
+		for (int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(0, 1));
+			
+		}
+		int counter = 0;
+		int tSuit = -1;
+		boolean rightCard = false;
+		
+		for (int i = 0; i <suit.size(); i++) {
+			for (int j = 0; j < suit.size(); j++) {
+				if (!suit.get(i).equals(suit.get(j))) {
+					counter++;
+				}
+			}
+			
+			if (counter != 1 && counter != suit.size() -1)
+				return -1;
+			if (counter == suit.size() -1) {
+				if (rightCard)
+					return -1;
+				
+				rightCard = true;
+				tSuit = i;
+			}
+			counter = 0;	
+			
+		}
+		return tSuit;
+		
+	}
 	
 	
 	

@@ -528,7 +528,7 @@ public class GameTest extends TestCase{
 	}
 	
 	public void testOneAFFlushCase1() {
-		 Hand testHand = new Hand();
+		 AIPHand testHand = new AIPHand();
 	     String [] cards = new String [5];
 	      
 	      cards[0] = "C5";
@@ -537,11 +537,11 @@ public class GameTest extends TestCase{
 	      cards[3] = "C10";
 	      cards[4] = "D4";
 	      
-	      assertEquals(4, testHand.cardAFFlush(cards));
+	      assertEquals(4, testHand.cardAFFlushAIP(cards));
 	}
 	
 	public void testOneAFFlushCase2() {
-		 Hand testHand = new Hand();
+		 AIPHand testHand = new AIPHand();
 	     String [] cards = new String [5];
 	      
 	      cards[0] = "HA";
@@ -550,9 +550,11 @@ public class GameTest extends TestCase{
 	      cards[3] = "H8";
 	      cards[4] = "HK";
 	      
-	      assertEquals(2, testHand.cardAFFlush(cards));
+	      assertEquals(2, testHand.cardAFFlushAIP(cards));
 		
 	}
+	
+	
 	
 	
 }
