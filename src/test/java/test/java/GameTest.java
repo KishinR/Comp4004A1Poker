@@ -704,4 +704,27 @@ public class GameTest extends TestCase{
 	      assertEquals(true, testHand.getScore(cards1) > testHand.getScore(cards2));
 	}
 	
+	public void testCorrectHighCard() {
+		  Hand testHand = new Hand();
+	      String [] cards1 = new String [5];
+	      String [] cards2 = new String [5];
+	      
+	      cards1[0] = "S2";
+	      cards1[1] = "S3";
+	      cards1[2] = "S4";
+	      cards1[3] = "HK";
+	      cards1[4] = "HJ";
+	      
+	      cards2[0] = "C2";
+	      cards2[1] = "C3";
+	      cards2[2] = "C4";
+	      cards2[3] = "DJ";
+	      cards2[4] = "D9";
+	     
+	      assertEquals(true, testHand.getScore(cards1) > testHand.getScore(cards2));
+	}
+	
+	
+	
+	
 }
