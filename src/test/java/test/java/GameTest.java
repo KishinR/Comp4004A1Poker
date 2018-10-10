@@ -633,4 +633,27 @@ public class GameTest extends TestCase{
 	      assertEquals(1, testHand.cardAFStraightFlushAIP(cards));
 	}
 	
+	public void testSameThreeSuitAIP() {
+		 ArrayList<Integer> otherCards = new ArrayList<Integer> ();
+		 AIPHand testHand = new AIPHand();
+	     String [] cards = new String [5];
+	      
+	     cards[0] = "D8";
+	     cards[1] = "C4";
+	     cards[2] = "DJ";
+	     cards[3] = "H10";
+	     cards[4] = "DK";
+	     
+	     otherCards.add(1);
+	     otherCards.add(3);
+		 assertEquals(true, otherCards.containsAll(testHand.sameThreeSuitAIP(cards)));
+		 
+	}
+	
+	
+	
+	
+	
+	
+	
 }
