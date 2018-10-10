@@ -946,5 +946,39 @@ public class AIPHand {
 		
 	}
 	
+	public String stratRequired(String [] hand) {
+		
+		if(royalFlushAIP(hand)) return "Royal Flush";
+		else if(straightFlushAIP(hand)) return "Straight Flush";
+		else if(fourOAKindAIP(hand)) return "Four of a Kind";
+		else if(fullHouseAIP(hand)) return "Full House";
+		else if(flushAIP(hand)) return "Flush";
+		else if(straightAIP(hand))return "Straight";
+		else if(threeOAKindAIP(hand)) return "Three of a Kind";
+		else if(twoPairAIP(hand)) return "Two Pair";
+		else if(PairAIP(hand)) return "Pair";
+		else return "High Card";
+		
+	}
 	
+	public int useStrat1(String [] hand) {
+		
+		if(cardAFStraightFlushAIP(hand) != -1) return cardAFStraightFlushAIP(hand);
+		else if(cardAFStraightAIP(hand) != -1) return cardAFStraightFlushAIP(hand);
+		else if(cardAFFlushAIP(hand) != -1) return cardAFStraightFlushAIP(hand);
+		else if (cardAFTPairAIP(hand) != -1) return cardAFStraightFlushAIP(hand);
+		
+		return -1;
+	}
+	
+	public ArrayList<Integer> useStrat2(String [] hand){
+		
+		if(!sameThreeTypeAIP(hand).contains(-1)) return sameThreeTypeAIP(hand);
+		else if(!sameThreeSuitAIP(hand).contains(-1)) return sameThreeSuitAIP(hand);
+		else if(!sameThreeSequenceAIP(hand).contains(-1)) return sameThreeSequenceAIP(hand);
+		else if(!sameTwoPair(hand).contains(-1)) return sameTwoPair(hand);
+		else return highCardAIP(hand);
+		
+		
+	}
 }
