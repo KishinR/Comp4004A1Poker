@@ -508,15 +508,12 @@ public class AIPHand {
 	}
 	
 	public int cardAFStraightFlushAIP(String [] hand) {
-	
-		
+
 		if(flushAIP(hand)) 
 			return cardAFStraightAIP(hand);
 		if(straightAIP(hand)) 
 			return cardAFFlushAIP(hand);
-		
-		System.out.println(cardAFStraightAIP(hand));
-		//System.out.println(cardAFFlush(hand));
+	
 		if(cardAFStraightAIP(hand) == cardAFFlushAIP(hand)) 
 		return cardAFFlushAIP(hand);
 		
