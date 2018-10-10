@@ -555,7 +555,42 @@ public class AIPHand {
 		return diffCards;
 	}
 
-	
+	public ArrayList<Integer> sameThreeRankAIP(String[] hand){
+		
+		ArrayList <Integer> diffCards = new ArrayList<Integer>();
+		LinkedList<String> suit = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(1));
+			
+		}
+
+		int counter = 0;
+		String tType = "";
+		boolean threeOAKind = false;
+		for (int i = 0; i < suit.size(); i++) {
+			for (int j = 0; j < suit.size(); j++) 
+				if(suit.get(i).equals(suit.get(j))) 
+					counter++;
+			if(counter == 3) tType = suit.get(i); 
+			counter = 0;
+		}
+		
+		String diffCard1 = "";
+		String diffCard2 = "";
+		
+		for (int i = 0; i < suit.size(); i++) 
+			if(!suit.get(i).equals(tType))
+				diffCard1 = suit.get(i);
+		for (int i = 0; i < suit.size(); i++) 
+			if((!suit.get(i).equals(tType)) && (!suit.get(i).equals(diffCard1)))
+				diffCard2 = suit.get(i);
+		
+		diffCards.add(suit.indexOf(diffCard1));
+		diffCards.add(suit.indexOf(diffCard2));
+		
+		return diffCards;
+	}
 	
 	
 	
