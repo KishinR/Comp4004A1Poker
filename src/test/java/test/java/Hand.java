@@ -611,4 +611,10 @@ public class Hand {
 		
 		return handScore;
 	}
+
+
+
+
+
+
 }

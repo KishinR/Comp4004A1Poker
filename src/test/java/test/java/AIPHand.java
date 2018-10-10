@@ -555,6 +555,70 @@ public class AIPHand {
 		return diffCards;
 	}
 
+	public int cardAFTPairAIP(String[] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		for (int i = 0; i < hand.length; i++) {
+			rank.add(hand[i].substring(1));
+		
+		}
+	
+		
+		int counter = 0;
+		String tType1 = "";
+		String tType2 = "";
+		boolean twoOAKind1 = false;
+		boolean twoOAKind2 = false;
+		
+		for (int i = 0; i < rank.size(); i++) {
+			
+			for (int j = 0; j < rank.size(); j++)
+				if(rank.get(i).equals(rank.get(j))) 
+					counter++;
+			
+			if(counter > 2) 
+				return -1;
+			
+			if(counter == 2) { 
+				if (!twoOAKind1) {
+					tType1 = rank.get(i); 
+					twoOAKind1 = true;
+				}
+					
+			}
+			counter = 0;
+		}
+		
+		for (int i = 0; i < rank.size(); i++) {
+			
+			for(int j = 0; j < rank.size(); j++)
+				if(rank.get(i).equals(rank.get(j)) && (!rank.get(i).equals(tType1)))
+					counter++;
+			
+			if(counter > 2) 
+				return -1;
+			
+			if(counter == 2) { 
+				if (!twoOAKind2) {
+					tType2 = rank.get(i); 
+					twoOAKind2 = true;
+				}
+				
+			}
+			counter = 0;
+		}
+		
+		String oddCard = "";
+		
+		for(int i = 0; i < rank.size(); i++)
+			if( !(rank.get(i).equals(tType1)) && !(rank.get(i).equals(tType2)))
+				oddCard = rank.get(i);
+		
+		if(oddCard.equals(""))
+			return -1;
+		
+		return rank.indexOf(oddCard);
+	}
+	
 	public ArrayList<Integer> sameThreeRankAIP(String[] hand){
 		
 		ArrayList <Integer> diffCards = new ArrayList<Integer>();
@@ -609,7 +673,8 @@ public class AIPHand {
 		}
 		
 		if(intType.contains(14)) {
-			if(intType.contains(2) && intType.contains(3)) intType.set(intType.indexOf(14), 1);
+			if(intType.contains(2) && intType.contains(3)) 
+				intType.set(intType.indexOf(14), 1);
 		}
 		Collections.sort(intType);
 			
@@ -687,6 +752,43 @@ public class AIPHand {
 		}
 		return diffCards;
 		
+	}
+
+	public ArrayList<Integer> sameThreeTypeAIP(String[] hand){
+		
+		ArrayList <Integer> diffCards = new ArrayList<Integer>();
+		LinkedList<String> suit = new LinkedList<String>();
+		
+		for(int i = 0; i < hand.length; i++) {
+			suit.add(hand[i].substring(1));
+			
+		}
+
+		int counter = 0;
+		String tType = "";
+		boolean threeOAKind = false;
+		for (int i = 0; i < suit.size(); i++) {
+			for (int j = 0; j < suit.size(); j++) 
+				if(suit.get(i).equals(suit.get(j))) 
+					counter++;
+			if(counter == 3) tType = suit.get(i); 
+			counter = 0;
+		}
+		
+		String diffCard1 = "";
+		String diffCard2 = "";
+		
+		for (int i = 0; i < suit.size(); i++) 
+			if(!suit.get(i).equals(tType))
+				diffCard1 = suit.get(i);
+		for (int i = 0; i < suit.size(); i++) 
+			if((!suit.get(i).equals(tType)) && (!suit.get(i).equals(diffCard1)))
+				diffCard2 = suit.get(i);
+		
+		diffCards.add(suit.indexOf(diffCard1));
+		diffCards.add(suit.indexOf(diffCard2));
+		
+		return diffCards;
 	}
 
 	public int suitPoints(String [] hand, int index) {
