@@ -449,6 +449,32 @@ public class GameTest extends TestCase{
 	      assertEquals(false, testHand.straightFlush(cards));
 	}
 	
+	public void testAIPStraightFlushCase1() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "C8";
+	      cards[1] = "C9";
+	      cards[2] = "C10";
+	      cards[3] = "CJ";
+	      cards[4] = "CQ";
+	      
+	      assertEquals(true, Hand.straightFlushAIP(cards));
+	}
+	
+	public void testAIPStraightFlushCase2() {
+		  AIPHand Hand = new AIPHand();
+	      String [] cards = new String [5];
+	      
+	      cards[0] = "H2";
+	      cards[1] = "S5";
+	      cards[2] = "SJ";
+	      cards[3] = "HJ";
+	      cards[4] = "SK";
+	      
+	      assertEquals(false, Hand.straightFlushAIP(cards));
+	}
+	
 	
 	
 	
