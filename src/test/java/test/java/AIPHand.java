@@ -427,6 +427,85 @@ public class AIPHand {
 		
 	}
 	
+	public int cardAFStraightAIP(String[] hand) {
+		LinkedList<String> rank = new LinkedList<String>();
+		for (int i = 0; i < hand.length; i++) {
+			rank.add(hand[i].substring(1));
+		}
+		
+		LinkedList<Integer> intType = new LinkedList<Integer>();
+		for (int i = 0; i < hand.length; i++) {
+			if (rank.get(i).equals("J")) intType.add(11);
+			else if (rank.get(i).equals("Q")) intType.add(12);
+			else if (rank.get(i).equals("K")) intType.add(13);
+			else if (rank.get(i).equals("A")) intType.add(14);
+			else intType.add(Integer.parseInt(rank.get(i))); 
+		}
+		
+		if (intType.contains(14)) {
+			if (specialAce(intType) == 3)
+				intType.set(intType.indexOf(14), 1);
+		}
+		Collections.sort(intType);
+		int tTypeI = -1;
+		String tType = "";
+		boolean rightCard = false;
+		
+		
+		if(intType.get(1) - intType.get(0) != 1) {
+			if(intType.get(1) - intType.get(0) != 2) return -1;
+			if(intType.get(2) - intType.get(1) != 1) return -1;
+			if(intType.get(3) - intType.get(2) != 1) return -1;
+			if(intType.get(4) - intType.get(3) == 1) {
+				if(rightCard) return -1;
+				rightCard = true;
+				tTypeI = 0;
+			}
+			
+		
+		}
+		
+		
+		if(intType.get(2) - intType.get(1) != 1) {
+			if(intType.get(2) - intType.get(1) != 2) return -1;
+			if(intType.get(3) - intType.get(2) != 1) return -1;
+			if(intType.get(4) - intType.get(3) == 1) {
+				if(rightCard) return -1;
+				rightCard = true;
+				tTypeI = 0;
+			}
+			
+		}
+		
+		if(intType.get(3) - intType.get(2) != 1) {
+			if(intType.get(3) - intType.get(2) != 2) return -1;
+			if(intType.get(4) - intType.get(3) == 1) {
+				if(rightCard) return -1;
+				rightCard = true;
+				tTypeI = 0;
+			}
+		}
+		
+		if(intType.get(4) - intType.get(3) != 1) {
+			if(rightCard) return -1;
+			rightCard = true;
+			tTypeI = 4;
+			//special case
+			if(intType.get(4) - intType.get(3) == 2) tTypeI = 0;
+		}
+
+        if(tTypeI == -1) return -1;
+		
+		if(intType.get(tTypeI) == 1) tType = "A";
+		else if(intType.get(tTypeI) == 11) tType = "J";
+		else if(intType.get(tTypeI) == 12) tType = "Q";
+		else if(intType.get(tTypeI) == 13) tType = "K";
+		else if(intType.get(tTypeI) == 14) tType = "A";
+		else tType = intType.get(tTypeI).toString();
+		
+		System.out.println(rank.indexOf(tType));
+		return rank.indexOf(tType);
+	}
 	
 	
 	
